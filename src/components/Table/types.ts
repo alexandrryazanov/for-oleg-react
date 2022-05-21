@@ -1,11 +1,13 @@
-export interface TableProps {
-  columns: TableColumn[];
-  data: any[];
+export interface TableProps<DataType> {
+  columns: TableColumn<DataType>[];
+  data: DataType[];
   isSelectable?: boolean;
-  onChangeSelectedRows?: (selectedRows: any[]) => void;
+  onChangeSelectedRows?: (selectedRows: DataType[]) => void;
 }
 
-export interface TableColumn {
+export interface TableColumn<DataType> {
   title: string;
-  accessor: ((field: any) => string) | string;
+  accessor: Accessor<DataType>;
 }
+
+export type Accessor<DataType> = ((field: DataType) => string) | keyof DataType;

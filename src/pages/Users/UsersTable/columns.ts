@@ -1,7 +1,7 @@
 import { TableColumn } from "../../../components/Table/types";
 import { UserData } from "../../../pages/Users/UsersTable/types";
 
-export const columns: TableColumn[] = [
+export const columns: TableColumn<UserData>[] = [
   {
     title: "Ник",
     accessor: "username",
@@ -20,10 +20,10 @@ export const columns: TableColumn[] = [
   },
   {
     title: "Компания",
-    accessor: (userData: UserData) => userData.company.name,
+    accessor: (userData) => userData.company.name,
   },
   {
     title: "Улица",
-    accessor: (userData: UserData) => userData.address.street,
+    accessor: (userData) => userData.address.street,
   },
 ];

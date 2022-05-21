@@ -3,8 +3,6 @@ import { Tabs, Tab } from "../components/Tabs";
 import UsersPage from "../pages/Users";
 
 const Test = () => {
-  console.log("oleg");
-
   return (
     <div>
       <Tabs>

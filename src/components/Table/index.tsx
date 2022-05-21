@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./styles.css";
 import { TableProps } from "./types";
 
-function Table({
+function Table<DataType>({
   data,
   columns,
   isSelectable,
   onChangeSelectedRows,
-}: TableProps) {
+}: TableProps<DataType>) {
   const [selectedRowsIndexes, setSelectedRowsIndexes] = useState<number[]>([]);
 
   const changeIsSelectedRow = (index: number) => {
