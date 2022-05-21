@@ -1,0 +1,21 @@
+.table-container {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.table {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.row-container {
+    height: 45px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.checkbox-column {
+    padding: 0 10px;
+}
