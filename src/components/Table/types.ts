@@ -7,7 +7,5 @@ export interface TableProps<DataType> {
 
 export interface TableColumn<DataType> {
   title: string;
-  accessor: Accessor<DataType>;
+  accessor: ((field: DataType) => string) | keyof DataType;
 }
-
-export type Accessor<DataType> = ((field: DataType) => string) | keyof DataType;
