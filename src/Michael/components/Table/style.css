@@ -1,0 +1,21 @@
+.mtable-container {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.mtable {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.mrow-container {
+    height: 45px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.mcheckbox-column {
+    padding: 0 10px;
+}
