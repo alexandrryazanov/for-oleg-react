@@ -7,7 +7,7 @@ export const columns: TableColumn<UserData>[] = [
     accessor: "username",
   },
   {
-    title: "E-mail",
+    title: "E-mail", //test
     accessor: "email",
   },
   {
