@@ -12,9 +12,10 @@ const userRoutes = [
   <Route path="/" element={<Home />} key={0} />,
   <Route path="michael" element={<Michael />} key={1} />,
   <Route path="oleg" element={<Oleg />} key={2} />,
-  <Route path="test3" element={<NotFound />} key={3} />,
-  <Route path={`test3/:id`} element={<Test3 />} key={4} />,
-  <Route path="*" element={<NotFound />} key={5} />,
+  <Route path="Alex" element={<Test />} key={3} />,
+  <Route path="test3" element={<NotFound />} key={4} />,
+  <Route path={`test3/:id`} element={<Test3 />} key={5} />,
+  <Route path="*" element={<NotFound />} key={6} />,
 ];
 
 const MainRoutes = () => {
