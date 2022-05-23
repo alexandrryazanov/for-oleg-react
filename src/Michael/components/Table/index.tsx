@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
-import { MTableProps } from "./types";
+import { TableProps } from "./types";
 
-function MTable<MDataType>({
+function Table<DataType>({
   data,
   columns,
   isSelectable,
   onChangeSelectedRows,
-}: MTableProps<MDataType>) {
+}: TableProps<DataType>) {
   const [selectedRowsIndexes, setSelectedRowsIndexes] = useState<number[]>([]);
 
   const changeIsSelectedRow = (index: number) => {
@@ -66,4 +66,4 @@ function MTable<MDataType>({
   );
 }
 
-export default MTable;
+export default Table;

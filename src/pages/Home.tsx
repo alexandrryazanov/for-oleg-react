@@ -5,13 +5,13 @@ const Home = () => {
   return (
     <>
       <div>
-        <NavLink to={"/michael"}>Михан</NavLink>
+        <NavLink to={"michael"}>Михан</NavLink>
       </div>
       <div>
         <NavLink to={"oleg"}>Олег</NavLink>
       </div>
       <div>
-        <NavLink to={"Alex"}>Санёк</NavLink>
+        <NavLink to={"alex"}>Санёк</NavLink>
       </div>
     </>
   );

@@ -1,7 +1,7 @@
-import { MTableColumn } from "../../../components/MTable/types";
+import { TableColumn } from "../../../components/Table/types";
 import { UserData } from "./types";
 
-export const columns: MTableColumn<UserData>[] = [
+export const columns: TableColumn<UserData>[] = [
   {
     title: "Ник",
     accessor: "username",
