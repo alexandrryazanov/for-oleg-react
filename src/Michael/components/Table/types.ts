@@ -3,6 +3,10 @@ export interface TableProps<DataType> {
   data: DataType[];
   isSelectable?: boolean;
   onChangeSelectedRows?: (selectedRows: DataType[]) => void;
+  offset: number;
+  setOffset: (item: number) => void;
+  limit: number;
+  setLimit: (item: number) => void;
 }
 
 export interface TableColumn<DataType> {
