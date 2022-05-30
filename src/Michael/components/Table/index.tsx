@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./style.css";
 import { TableProps } from "./types";
 import LimitDropdown from "./Dropdowns/LimitDropdown/LimitDropdown";
+import Select from "../Select/Select";
+import SelectDropdown from "./Dropdowns/SelectDropdown";
 
 const dataCount = 10;
 
@@ -15,8 +17,13 @@ function Table<DataType>({
   limit,
   setLimit,
 }: TableProps<DataType>) {
+  const columnsTitle = columns.map((el) => el.title);
+  const [IsSelectable, setIsSelectable] = useState(false);
   const [selectedRowsIndexes, setSelectedRowsIndexes] = useState<number[]>([]);
   const [showLimitDropdown, setShowLimitDropdown] = useState(false);
+  const [showSelectDropdown, setShowSelectDropdown] = useState(false);
+  const [selectedColumnsTitle, setSelectedColumnsTitle] =
+    useState<string[]>(columnsTitle);
 
   const changeIsSelectedRow = (index: number) => {
     const found = selectedRowsIndexes.find((i) => i === index) !== undefined;
@@ -24,6 +31,12 @@ function Table<DataType>({
       found ? prev.filter((i) => index !== i) : [...prev, index]
     );
   };
+
+  const filterCol = useMemo(
+    () =>
+      columns.filter((column) => selectedColumnsTitle.includes(column.title)),
+    [selectedColumnsTitle]
+  );
 
   useEffect(() => {
     if (onChangeSelectedRows && data.length) {
@@ -39,24 +52,48 @@ function Table<DataType>({
   const switchRight = () => {
     setOffset(offset + limit >= dataCount ? offset : offset + limit);
   };
+  useMemo(() => {
+    filterCol.length && isSelectable
+      ? setIsSelectable(true)
+      : setIsSelectable(false);
+  }, [filterCol]);
 
   return (
     <>
-      <div className="mtable-container">
-        <table className="mtable">
+      <div className="m-table-container">
+        <table className="m-table">
           <thead>
-            <tr className="mrow-container">
-              {isSelectable && <th />}
-              {columns.map((column) => (
-                <th key={column.title}>{column.title}</th>
-              ))}
+            <tr className="m-row-container">
+              <td>
+                <Select
+                  setShowSelectDropdown={setShowSelectDropdown}
+                  showSelectDropdown={showSelectDropdown}
+                />
+                {showSelectDropdown && (
+                  <SelectDropdown
+                    columns={columns}
+                    selectedColumnsTitle={selectedColumnsTitle}
+                    setSelectedColumnsTitle={setSelectedColumnsTitle}
+                  />
+                )}
+              </td>
+
+              {filterCol.length ? (
+                filterCol.map((column) => (
+                  <th key={column.title}>{column.title}</th>
+                ))
+              ) : (
+                <th style={{ textAlign: "center" }}>
+                  Вы не оставили ни одной колонки
+                </th>
+              )}
             </tr>
           </thead>
           <tbody>
             {data.map((item, i) => (
-              <tr key={i} className="mrow-container">
-                {isSelectable && (
-                  <td className="mcheckbox-column">
+              <tr key={i} className="m-row-container">
+                {IsSelectable ? (
+                  <td className="m-checkbox-column">
                     <input
                       type="checkbox"
                       checked={
@@ -66,8 +103,10 @@ function Table<DataType>({
                       onChange={() => changeIsSelectedRow(i)}
                     />
                   </td>
+                ) : (
+                  <td className="m-checkbox-column" />
                 )}
-                {columns.map((column) => (
+                {filterCol.map((column) => (
                   <td key={column.title}>
                     {typeof column.accessor === "function"
                       ? column.accessor(item)
@@ -79,11 +118,11 @@ function Table<DataType>({
           </tbody>
         </table>
       </div>
-      <div className={"mtfoot"}>
-        <div className={"wrapper_mselect_amount_row"}>
+      <div className={"m-tfoot"}>
+        <div className={"wrapper-m-select-amount-row"}>
           <span>Rows per page:</span>
           <button
-            className={"mselect_amount_row"}
+            className={"m-select-amount-row"}
             onClick={() => setShowLimitDropdown(!showLimitDropdown)}
           >
             {limit}
@@ -96,13 +135,13 @@ function Table<DataType>({
             />
           )}
         </div>
-        <div className={"counter_page"}>
+        <div className={"counter-page"}>
           {offset + 1}-
           {limit + offset <= dataCount ? limit + offset : dataCount} of{" "}
           {dataCount}
         </div>
         <button
-          className={offset <= 0 ? "disable_mswitch-left" : "mswitch-left"}
+          className={offset <= 0 ? "disable-m-switch-left" : "m-switch-left"}
           disabled={offset <= 0}
           onClick={switchLeft}
         >
@@ -111,8 +150,8 @@ function Table<DataType>({
         <button
           className={
             offset + limit >= dataCount
-              ? "disable_mswitch-left"
-              : "mswitch-right"
+              ? "disable-m-switch-left"
+              : "m-switch-right"
           }
           disabled={offset + limit >= dataCount}
           onClick={switchRight}
