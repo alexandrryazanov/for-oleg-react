@@ -14,12 +14,12 @@ const LimitDropdown = ({
   };
   const limitItem = [2, 3, 5];
   return (
-    <div className={"mwrapper_dropdown_limit"}>
+    <div className={"m-wrapper-dropdown-limit"}>
       {limitItem.map((limit, i) => (
         <button
           key={i}
           onClick={() => onClickHandler(limit)}
-          className={"mdropdown_limit_item"}
+          className={"m-dropdown-limit-item"}
         >
           {limit}
         </button>
