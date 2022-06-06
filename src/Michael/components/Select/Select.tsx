@@ -3,14 +3,14 @@ import "./style.css";
 import { SelectProps } from "./types";
 
 const Select = ({ setShowSelectDropdown, showSelectDropdown }: SelectProps) => {
+  const clickHandler = () => {
+    setShowSelectDropdown(!showSelectDropdown);
+  };
   return (
-    <div
-      onClick={() => setShowSelectDropdown(!showSelectDropdown)}
-      className={"m_wrapper_select"}
-    >
-      <div className={"m_styled_select"} />
-      <div className={"m_styled_select"} />
-      <div className={"m_styled_select"} />
+    <div onClick={clickHandler} className={"m-wrapper-select"}>
+      <div className={"m-styled-select"} />
+      <div className={"m-styled-select"} />
+      <div className={"m-styled-select"} />
     </div>
   );
 };
