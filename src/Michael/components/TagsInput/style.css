@@ -1,0 +1,43 @@
+.m-wrapper-tags-input {
+    display: flex;
+    align-items: center;
+}
+.m-tags-input {
+    width: 400px;
+    height: 30px;
+    background-color: #202020;
+    border-radius: 5px;
+    border: 0;
+    color: white;
+    padding: 10px 20px;
+    margin-right: 20px;
+
+}
+.m-tags-input-item {
+    margin-left: 10px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    background-color: #2D2D2D;
+    border-radius: 15px ;
+    position: absolute;
+}
+.m-tags-input-text {
+    color: white;
+    padding: 10px ;
+
+}
+.m-tags-input-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: #343434;
+    color: darkred;
+}
+.m-tags-input-icon:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
