@@ -1,0 +1,46 @@
+.m-position-enter-cookies {
+    position: absolute;
+    bottom: 2px;
+    right: 10px;
+    background-color: #343434;
+    min-width: 15vw;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0.95;
+}
+.m-wrapper-text-enter-cookies {
+    display: flex;
+    margin-bottom: 8px;
+    margin-left: 10px;
+    color: white;
+}
+.m-button-enter-cookies {
+    margin-right: 10px;
+    background-color: lightgrey;
+    border-radius: 3px;
+    border: 0;
+    color: black;
+    cursor: pointer;
+}
+.m-wrapper-buttons-enter-cookies {
+    display: flex;
+}
+.m-button-enter-cookies:hover {
+    opacity: 0.8;
+}
+.m-button-reject-cookies {
+
+    background-color: #202020;
+    border-radius: 3px;
+    border: 0;
+
+    color: #676767;
+    cursor: pointer;
+}
+
+@media (max-width: 500px) {
+    .m-position-enter-cookies {
+        width: calc(100% - 40px);
+        left: 10px;
+    }
+}
