@@ -1,0 +1,26 @@
+.o-table-container {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+}
+
+.o-table {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.o-row-container {
+    height: 45px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.o-checkbox-column {
+    padding: 0 10px;
+}
+
+.o-not-found-columns {
+    text-align: center;
+}
