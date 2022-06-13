@@ -8,7 +8,7 @@ const ElementList = ({
   selectedElementListTitle,
 }: DropdownElementProps) => {
   return (
-    <div>
+    <div className="o-dropdown-list-element">
       <input
         className={"o-dropdown-checkbox"}
         type={"checkbox"}

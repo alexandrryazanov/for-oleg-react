@@ -1,18 +1,22 @@
 import React from "react";
 import { Tab, Tabs } from "../components/Tabs";
 import UsersPage from "./pages/Users";
-import Test from "./pages/Test";
 import Alarm from "./components/Alarm";
 import "./styles.css";
 import CookieModal from "./components/CookieModal";
+import { toCamelCase } from "./utils";
+import ObjectTree from "./components/ObjectTree";
+import TrafficLight from "./components/TrafficLight";
 
 const Oleg = () => {
+  console.log(toCamelCase("for-oleg-react", "-"));
   return (
     <div>
       <Tabs>
         <Tab title={"Users"} component={<UsersPage />} />
         <Tab title={"Alarm"} component={<Alarm className={"o-time"} />} />
-        <Tab title={"test2"} component={<Test />} />
+        <Tab title={"Object tree"} component={<ObjectTree />} />
+        <Tab title={"Traffic light"} component={<TrafficLight time={2000} />} />
       </Tabs>
       <CookieModal />
     </div>

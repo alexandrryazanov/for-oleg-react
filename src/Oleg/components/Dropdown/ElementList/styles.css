@@ -1,3 +1,9 @@
 .o-dropdown-checkbox {
     cursor: pointer;
 }
+
+.o-dropdown-list-element {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

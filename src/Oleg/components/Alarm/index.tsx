@@ -7,7 +7,8 @@ const Alarm = ({ className }: { className?: string }) => {
   const formattedDate = useMemo(() => getFormattedDate(time), [time]);
 
   useEffect(() => {
-    setInterval(() => setTime(new Date()), 1000);
+    const timer = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(timer);
   }, []);
 
   return <div className={className}>{formattedDate}</div>;
