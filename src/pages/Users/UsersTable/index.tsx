@@ -5,7 +5,7 @@ import { UserData, UsersTableProps } from "./types";
 
 const UsersTable = ({ data }: UsersTableProps) => {
   const showInConsole = (selectedRows: UserData[]) => {
-    console.log(selectedRows);
+    // console.log(selectedRows);
   };
 
   // здесь правильно получить данные из стора, например с помощью useSelector
