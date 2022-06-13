@@ -2,7 +2,7 @@ export type LightMode = 0 | 1;
 
 export interface TrafficLightProps {
   rules: {
-    lights: LightMode[];
+    lights: [LightMode, LightMode, LightMode];
     time: number;
   }[];
 }
