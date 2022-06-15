@@ -1,5 +1,5 @@
 import React from "react";
-import Test from "./pages/Test";
+import Test from "./pages/Alex";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";

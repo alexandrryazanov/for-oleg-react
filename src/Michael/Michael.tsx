@@ -1,10 +1,12 @@
 import React from "react";
 import { Tab, Tabs } from "../components/Tabs";
 import UsersTab from "./pages/Users";
+import { NavLink } from "react-router-dom";
 
 const Michael = () => {
   return (
     <div>
+      <NavLink to={"/"}>Home</NavLink>
       <Tabs>
         <Tab title={"table-users"} component={<UsersTab />} />
         <Tab title={"test1"} component={<div>test1</div>} />
