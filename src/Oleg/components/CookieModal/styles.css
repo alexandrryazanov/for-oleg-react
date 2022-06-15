@@ -1,0 +1,44 @@
+.o-cookie {
+    position: fixed;
+    width: 500px;
+    right: 10px;
+    bottom: 10px;
+    background-color: grey;
+    padding: 10px;
+    display: flex;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.o-cookie-img {
+    height: 30px;
+    margin: 10px;
+}
+
+.o-cookie-a {
+    padding-left: 5px;
+    text-decoration: none;
+}
+
+.o-cookie-a:hover {
+    border-bottom: 1px solid
+}
+
+.o-cookie-button {
+    height: 30px;
+    font-size: 15px;
+    margin: 10px;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+@media (max-width: 800px) {
+    .o-cookie {
+        width: 100%;
+        right: 0;
+        bottom: 0;
+        border-radius: 0;
+    }
+}
