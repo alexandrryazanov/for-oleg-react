@@ -7,6 +7,7 @@ import CookieModal from "./components/CookieModal";
 import { toCamelCase } from "./utils";
 import ObjectTree from "./components/ObjectTree";
 import TrafficLight from "./components/TrafficLight";
+import TicTacToe from "./components/TicTacToe";
 
 const Oleg = () => {
   console.log(toCamelCase("for-oleg-react", "-"));
@@ -17,6 +18,7 @@ const Oleg = () => {
         <Tab title={"Alarm"} component={<Alarm className={"o-time"} />} />
         <Tab title={"Object tree"} component={<ObjectTree />} />
         <Tab title={"Traffic light"} component={<TrafficLight time={2000} />} />
+        <Tab title={"Крестики нолики"} component={<TicTacToe />} />
       </Tabs>
       <CookieModal />
     </div>

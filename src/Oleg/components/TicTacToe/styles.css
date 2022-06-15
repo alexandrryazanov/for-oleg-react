@@ -1,0 +1,18 @@
+.o-tic-tac-toe-table {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.o-tic-tac-toe-row-container {
+    /*border-bottom: 1px solid lightgrey;*/
+}
+
+.o-tic-tac-toe-column {
+    width: 70px;
+    height: 70px;
+    font-size: 50px;
+    cursor: pointer;
+    border: 1px solid grey;
+}
