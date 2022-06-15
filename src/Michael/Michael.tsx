@@ -2,6 +2,7 @@ import React from "react";
 import { Tab, Tabs } from "../components/Tabs";
 import UsersTab from "./pages/Users";
 import { NavLink } from "react-router-dom";
+import PopUpСookies from "./components/PopUpСookies";
 
 const Michael = () => {
   return (
@@ -12,6 +13,7 @@ const Michael = () => {
         <Tab title={"test1"} component={<div>test1</div>} />
         <Tab title={"test2"} component={<div>test2</div>} />
       </Tabs>
+      <PopUpСookies />
     </div>
   );
 };
