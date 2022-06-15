@@ -1,22 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./style.css";
 import { TableProps } from "./types";
 import LimitDropdown from "./Dropdowns/LimitDropdown/LimitDropdown";
+import Select from "../Select/Select";
+import SelectDropdown from "./Dropdowns/SelectDropdown";
 
-const dataCount = 10;
+const DATACOUNT = 10;
 
 function Table<DataType>({
   data,
   columns,
   isSelectable,
+  withPagination,
   onChangeSelectedRows,
   setOffset,
   offset,
   limit,
   setLimit,
 }: TableProps<DataType>) {
+  const columnsTitle = columns.map((el) => el.title);
+  const [IsSelectable, setIsSelectable] = useState(false);
   const [selectedRowsIndexes, setSelectedRowsIndexes] = useState<number[]>([]);
   const [showLimitDropdown, setShowLimitDropdown] = useState(false);
+  const [showSelectDropdown, setShowSelectDropdown] = useState(false);
+  const [selectedColumnsTitle, setSelectedColumnsTitle] =
+    useState<string[]>(columnsTitle);
 
   const changeIsSelectedRow = (index: number) => {
     const found = selectedRowsIndexes.find((i) => i === index) !== undefined;
@@ -24,6 +32,12 @@ function Table<DataType>({
       found ? prev.filter((i) => index !== i) : [...prev, index]
     );
   };
+
+  const filteredColumns = useMemo(
+    () =>
+      columns.filter((column) => selectedColumnsTitle.includes(column.title)),
+    [selectedColumnsTitle, columns]
+  );
 
   useEffect(() => {
     if (onChangeSelectedRows && data.length) {
@@ -37,89 +51,128 @@ function Table<DataType>({
     setOffset(offset <= 0 ? offset : offset - limit);
   };
   const switchRight = () => {
-    setOffset(offset + limit >= dataCount ? offset : offset + limit);
+    setOffset(offset + limit >= DATACOUNT ? offset : offset + limit);
+  };
+  useMemo(() => {
+    setIsSelectable(Boolean(filteredColumns.length && isSelectable));
+  }, [filteredColumns, isSelectable]);
+
+  const checkedSelectRow = (i: number) => {
+    return selectedRowsIndexes.find((index) => index === i) !== undefined;
+  };
+
+  const onClickButtonSelected = () => {
+    setShowLimitDropdown(!showLimitDropdown);
   };
 
   return (
     <>
-      <div className="mtable-container">
-        <table className="mtable">
+      <div className="m-table-container">
+        <table className="m-table">
           <thead>
-            <tr className="mrow-container">
-              {isSelectable && <th />}
-              {columns.map((column) => (
-                <th key={column.title}>{column.title}</th>
-              ))}
+            <tr className="m-row-container">
+              <td className={"m-column-container"}>
+                <Select
+                  setShowSelectDropdown={setShowSelectDropdown}
+                  showSelectDropdown={showSelectDropdown}
+                />
+                {showSelectDropdown && (
+                  <SelectDropdown
+                    columns={columns}
+                    selectedColumnsTitle={selectedColumnsTitle}
+                    setSelectedColumnsTitle={setSelectedColumnsTitle}
+                  />
+                )}
+              </td>
+
+              {filteredColumns.length
+                ? filteredColumns.map((column) => (
+                    <th key={column.title}>{column.title}</th>
+                  ))
+                : ""}
             </tr>
           </thead>
           <tbody>
-            {data.map((item, i) => (
-              <tr key={i} className="mrow-container">
-                {isSelectable && (
-                  <td className="mcheckbox-column">
-                    <input
-                      type="checkbox"
-                      checked={
-                        selectedRowsIndexes.find((index) => index === i) !==
-                        undefined
-                      }
-                      onChange={() => changeIsSelectedRow(i)}
-                    />
-                  </td>
-                )}
-                {columns.map((column) => (
-                  <td key={column.title}>
-                    {typeof column.accessor === "function"
-                      ? column.accessor(item)
-                      : item[column.accessor]}
-                  </td>
-                ))}
+            {filteredColumns.length ? (
+              data.map((item, i) => (
+                <tr key={i} className="m-row-container">
+                  {IsSelectable ? (
+                    <td className="m-checkbox-column">
+                      <input
+                        type="checkbox"
+                        checked={checkedSelectRow(i)}
+                        onChange={() => changeIsSelectedRow(i)}
+                      />
+                    </td>
+                  ) : (
+                    <td className="m-checkbox-column" />
+                  )}
+                  {filteredColumns.map((column) => (
+                    <td key={column.title}>
+                      {typeof column.accessor === "function"
+                        ? column.accessor(item)
+                        : item[column.accessor]}
+                    </td>
+                  ))}
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <th colSpan={2} style={{ textAlign: "center" }}>
+                  Таблица пустая
+                </th>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
-      <div className={"mtfoot"}>
-        <div className={"wrapper_mselect_amount_row"}>
-          <span>Rows per page:</span>
+      {!filteredColumns.length ? (
+        ""
+      ) : !withPagination ? (
+        setLimit(DATACOUNT)
+      ) : (
+        <div className={"m-tfoot"}>
+          <div className={"wrapper-m-select-amount-row"}>
+            <span>Строк на странице:</span>
+            <button
+              className={"m-select-amount-row"}
+              onClick={onClickButtonSelected}
+            >
+              {limit}
+            </button>
+            {showLimitDropdown && (
+              <LimitDropdown
+                setOffset={setOffset}
+                setLimit={setLimit}
+                setShowLimitDropdown={setShowLimitDropdown}
+              />
+            )}
+          </div>
+          <div className={"counter-page"}>
+            {offset + 1}-
+            {limit + offset <= DATACOUNT ? limit + offset : DATACOUNT} /{" "}
+            {DATACOUNT}
+          </div>
           <button
-            className={"mselect_amount_row"}
-            onClick={() => setShowLimitDropdown(!showLimitDropdown)}
+            className={offset <= 0 ? "disable-m-switch-left" : "m-switch-left"}
+            disabled={offset <= 0}
+            onClick={switchLeft}
           >
-            {limit}
+            {"<"}
           </button>
-          {showLimitDropdown && (
-            <LimitDropdown
-              setOffset={setOffset}
-              setLimit={setLimit}
-              setShowLimitDropdown={setShowLimitDropdown}
-            />
-          )}
+          <button
+            className={
+              offset + limit >= DATACOUNT
+                ? "disable-m-switch-left"
+                : "m-switch-right"
+            }
+            disabled={offset + limit >= DATACOUNT}
+            onClick={switchRight}
+          >
+            {">"}
+          </button>
         </div>
-        <div className={"counter_page"}>
-          {offset + 1}-
-          {limit + offset <= dataCount ? limit + offset : dataCount} of{" "}
-          {dataCount}
-        </div>
-        <button
-          className={offset <= 0 ? "disable_mswitch-left" : "mswitch-left"}
-          disabled={offset <= 0}
-          onClick={switchLeft}
-        >
-          {"<"}
-        </button>
-        <button
-          className={
-            offset + limit >= dataCount
-              ? "disable_mswitch-left"
-              : "mswitch-right"
-          }
-          disabled={offset + limit >= dataCount}
-          onClick={switchRight}
-        >
-          {">"}
-        </button>
-      </div>
+      )}
     </>
   );
 }

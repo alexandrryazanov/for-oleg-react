@@ -2,6 +2,7 @@ export interface TableProps<DataType> {
   columns: TableColumn<DataType>[];
   data: DataType[];
   isSelectable?: boolean;
+  withPagination?: boolean;
   onChangeSelectedRows?: (selectedRows: DataType[]) => void;
   offset: number;
   setOffset: (item: number) => void;

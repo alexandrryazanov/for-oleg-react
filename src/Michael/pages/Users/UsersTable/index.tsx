@@ -19,12 +19,13 @@ const UsersTable = ({
     <Table<UserData> // <-- тут указываем тип для данных, которые приходят с бэка в эту таблицу
       columns={columns}
       data={data} // <-- то есть тип для вот этой data
-      isSelectable
       onChangeSelectedRows={showInConsole}
       setOffset={setOffset}
       offset={offset}
       limit={limit}
       setLimit={setLimit}
+      isSelectable
+      withPagination
     />
   );
 };

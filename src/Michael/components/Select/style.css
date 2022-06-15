@@ -1,13 +1,13 @@
-.m_wrapper_select {
+.m-wrapper-select {
     display: flex;
     padding: 0 10px;
     align-items: center;
 }
-.m_wrapper_select:hover {
+.m-wrapper-select:hover {
     cursor: pointer;
     opacity: 0.7;
 }
-.m_styled_select {
+.m-styled-select {
     width: 7px;
     margin-right: 2px;
     height: 7px;
