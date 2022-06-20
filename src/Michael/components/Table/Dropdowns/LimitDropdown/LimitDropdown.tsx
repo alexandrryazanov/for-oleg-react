@@ -2,6 +2,8 @@ import React from "react";
 import "./style.css";
 import { LimitDropdownProps } from "./types";
 
+const LIMITITEM = [2, 3, 5];
+
 const LimitDropdown = ({
   setOffset,
   setLimit,
@@ -12,14 +14,14 @@ const LimitDropdown = ({
     setLimit(limit);
     setShowLimitDropdown(false);
   };
-  const limitItem = [2, 3, 5];
+
   return (
-    <div className={"mwrapper_dropdown_limit"}>
-      {limitItem.map((limit, i) => (
+    <div className={"m-wrapper-dropdown-limit"}>
+      {LIMITITEM.map((limit, i) => (
         <button
           key={i}
           onClick={() => onClickHandler(limit)}
-          className={"mdropdown_limit_item"}
+          className={"m-dropdown-limit-item"}
         >
           {limit}
         </button>
