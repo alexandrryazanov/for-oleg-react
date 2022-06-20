@@ -6,8 +6,12 @@ import NotFound from "./pages/NotFound";
 import Test3 from "./pages/Test3";
 import Michael from "./Michael/Michael";
 import Oleg from "./Oleg/Oleg";
+import Customers from "./pages/Customers";
+import Products from "./pages/Products";
 
-const adminRoutes = [<Route path="admin/test" element={<Test />} key={1} />];
+const adminRoutes = [
+  <Route path="customers" element={<Customers />} key={1} />,
+];
 const userRoutes = [
   <Route path="/" element={<Home />} key={0} />,
   <Route path="michael" element={<Michael />} key={1} />,
@@ -15,7 +19,8 @@ const userRoutes = [
   <Route path="alex" element={<Test />} key={3} />,
   <Route path="test3" element={<NotFound />} key={4} />,
   <Route path={`test3/:id`} element={<Test3 />} key={5} />,
-  <Route path="*" element={<NotFound />} key={6} />,
+  <Route path={`products`} element={<Products />} key={6} />,
+  <Route path="*" element={<NotFound />} key={7} />,
 ];
 
 const MainRoutes = () => {
