@@ -8,10 +8,15 @@ import UnlockIos from "../components/UnlockIOs";
 import { Link } from "react-router-dom";
 import * as usersAPI from "../api/users";
 import useAuth from "../hooks/useAuth";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser } from "../redux/users/actions";
 
 const Alex = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const isAuth = useAuth();
+  const users = useSelector((store: any) => store.users);
+  const dispatch = useDispatch();
+  console.log(users);
 
   const showInputsValues = () => {
     console.log();
@@ -21,12 +26,20 @@ const Alex = () => {
     await usersAPI.login("admin", "admin");
   };
 
+  const logoutHandler = async () => {
+    await usersAPI.logout();
+  };
+
   return (
     <div>
+      <button onClick={() => dispatch(addUser({ name: "Mike" }))}>
+        ADD_USER
+      </button>
       <div>
         <Link to={"/products"}>Products</Link>
         {isAuth && <Link to={"/customers"}>Users</Link>}
-        <button onClick={loginHandler}>LOGIN</button>
+        {!isAuth && <button onClick={loginHandler}>LOGIN</button>}
+        {isAuth && <button onClick={logoutHandler}>LOGOUT</button>}
       </div>
       <button onClick={() => setModalOpen(true)}>Открыть модалку</button>
       <Tabs>
