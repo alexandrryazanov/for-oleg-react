@@ -8,9 +8,10 @@ import { toCamelCase } from "./utils";
 import ObjectTree from "./components/ObjectTree";
 import TrafficLight from "./components/TrafficLight";
 import TicTacToe from "./components/TicTacToe";
+import UnlockerApple from "./components/UnlockerApple";
 
 const Oleg = () => {
-  console.log(toCamelCase("for-oleg-react", "-"));
+  // console.log(toCamelCase("for-oleg-react", "-"));
   return (
     <div>
       <Tabs>
@@ -19,6 +20,7 @@ const Oleg = () => {
         <Tab title={"Object tree"} component={<ObjectTree />} />
         <Tab title={"Traffic light"} component={<TrafficLight time={2000} />} />
         <Tab title={"Крестики нолики"} component={<TicTacToe />} />
+        <Tab title={"Разблокировщик Apple"} component={<UnlockerApple />} />
       </Tabs>
       <CookieModal />
     </div>

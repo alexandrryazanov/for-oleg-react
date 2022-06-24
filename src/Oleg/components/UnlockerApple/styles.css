@@ -1,0 +1,13 @@
+.o-wrapper-unlocker-apple {
+    width: 200px;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: black;
+}
+
+.o-unlocker-apple {
+    background-color: white;
+    height: 25px;
+    width: 40px;
+    border-radius: 3px;
+}
