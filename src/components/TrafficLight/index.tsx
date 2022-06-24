@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./styles.css";
 import Light from "./Light";
 import { LightMode, TrafficLightProps } from "./types";
-import { delayInSec } from "./utils";
+import { delayInSec } from "../../utils";
 
 const TrafficLight = ({ rules }: TrafficLightProps) => {
   const [[redOn, yellowOn, greenOn], setLightsOn] = useState<LightMode[]>([]);

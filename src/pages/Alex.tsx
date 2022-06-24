@@ -10,6 +10,7 @@ import * as usersAPI from "../api/users";
 import useAuth from "../hooks/useAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../redux/users/actions";
+import GuessNumber from "../components/GuessNumber";
 
 const Alex = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -45,6 +46,7 @@ const Alex = () => {
       <Tabs>
         <Tab title="Users" component={<UsersPage />} />
         <Tab title="Dropdown" component={<DropdownPage />} />
+        <Tab title="Guess number" component={<GuessNumber />} />
         <Tab
           title="Traffic light"
           component={
