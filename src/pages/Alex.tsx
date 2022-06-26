@@ -13,10 +13,10 @@ import { addUser } from "../redux/users/actions";
 import GuessNumber from "../components/GuessNumber";
 import Avatar from "../components/Avatar";
 import useTheme from "../hooks/useTheme";
+import Button from "../components/Button";
 
 const Alex = () => {
   const { theme, changeTheme } = useTheme();
-  console.log("theme", theme);
 
   const [modalOpen, setModalOpen] = useState(false);
   const isAuth = useAuth();
@@ -36,7 +36,6 @@ const Alex = () => {
 
   return (
     <div>
-      <button onClick={() => changeTheme("Mike")}>Сменить тему</button>
       <button onClick={() => dispatch(addUser({ name: "Mike" }))}>
         ADD_USER
       </button>
@@ -75,6 +74,24 @@ const Alex = () => {
           title="Avatar"
           component={
             <Avatar src="https://sun1-95.userapi.com/s/v1/ig2/roVQ8Fydjx2jQNAsFKbnfQ9EIfPEuXsIlHMthi9XsLtBWCnOsS2gpJDeSLjQ-dd7MDkMhpMRju1PytbiVaQDEQoD.jpg?size=400x591&quality=96&crop=83,125,535,791&ava=1" />
+          }
+        />
+        <Tab
+          title="Theme"
+          component={
+            <div style={{ width: "400px" }}>
+              <h1>Текущая тема: {theme.title}</h1>
+              <Button onClick={() => changeTheme("Mike")} variant="outlined">
+                Сменить тему на Mike
+              </Button>
+              <br />
+              <br />
+              <Button onClick={() => changeTheme("Sky")}>
+                Сменить тему на Sky
+              </Button>
+              <br />
+              <br />
+            </div>
           }
         />
       </Tabs>

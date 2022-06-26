@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./styles.css";
+import useTheme from "../../../hooks/useTheme";
 
 const Tabs = ({ children }: { children: JSX.Element[] }) => {
+  const { theme } = useTheme();
   const [selectedTab, setSelectedTab] = useState(0);
 
   return (
@@ -10,7 +12,13 @@ const Tabs = ({ children }: { children: JSX.Element[] }) => {
         {children.map((child, i) => (
           <div
             key={i}
-            className={`tab-label ${selectedTab === i ? "selected-label" : ""}`}
+            className="tab-label"
+            style={{
+              borderBottom:
+                selectedTab === i
+                  ? `3px solid ${theme.colors.primary}`
+                  : "none",
+            }}
             onClick={() => setSelectedTab(i)}
           >
             {child.props.title}

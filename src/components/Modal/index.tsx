@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./styles.css";
 import { ModalProps } from "./types";
+import Button from "../../components/Button";
 
 const Modal: React.FC<ModalProps> = ({
   children,
@@ -34,14 +35,15 @@ const Modal: React.FC<ModalProps> = ({
         <div className="modal-header-and-content">
           <div className="modal-header">
             <span>{title}</span>
-            <button>X</button>
           </div>
           <div className="modal-content">{children}</div>
         </div>
         {showButtons && (
           <div className="modal-footer">
-            <button onClick={closeHandler}>{cancelLabel || "Cancel"}</button>
-            <button onClick={okHandler}>{okLabel || "OK"}</button>
+            <Button variant="outlined" onClick={closeHandler}>
+              {cancelLabel || "Cancel"}
+            </Button>
+            <Button onClick={okHandler}>{okLabel || "OK"}</Button>
           </div>
         )}
       </div>

@@ -9,3 +9,10 @@ export interface ITheme {
     info: string;
   };
 }
+
+export type ColorVariants =
+  | "primary"
+  | "secondary"
+  | "warning"
+  | "error"
+  | "info";
