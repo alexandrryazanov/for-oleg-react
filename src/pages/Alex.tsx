@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Tabs, Tab } from "../components/Tabs";
+import { Tab, Tabs } from "../components/Tabs";
 import UsersPage from "../pages/Users";
 import Modal from "../components/Modal";
 import DropdownPage from "../pages/DropdownPage";
@@ -14,6 +14,7 @@ import GuessNumber from "../components/GuessNumber";
 import Avatar from "../components/Avatar";
 import useTheme from "../hooks/useTheme";
 import Button from "../components/Button";
+import useAlert from "../hooks/useAlert";
 
 const Alex = () => {
   const { theme, changeTheme } = useTheme();
@@ -33,7 +34,7 @@ const Alex = () => {
   const logoutHandler = async () => {
     await usersAPI.logout();
   };
-
+  const { showAlert } = useAlert();
   return (
     <div>
       <button onClick={() => dispatch(addUser({ name: "Mike" }))}>
@@ -91,7 +92,7 @@ const Alex = () => {
               </Button>
               <br />
               <br />
-              <Button onClick={() => /*showAlert("Текст", "error")*/ null}>
+              <Button onClick={() => showAlert("Текст", "error")}>
                 Показать alert
               </Button>
             </div>

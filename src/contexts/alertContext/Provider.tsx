@@ -1,12 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import alertContext from ".";
 import Alert from "../../components/Alert";
+import { AlertType } from "../../components/Alert/types";
+import { IAlertSettings } from "./types";
 
 const AlertProvider: React.FC = ({ children }) => {
+  const [{ isOpen, title, type }, setSettings] = useState<IAlertSettings>({
+    isOpen: false,
+    title: "",
+    type: "info",
+  });
+
+  const showAlert = (title: string, type?: AlertType) => {
+    setSettings({ isOpen: true, title, type });
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(
+        () => setSettings((prev) => ({ ...prev, isOpen: false })),
+        3000
+      );
+    }
+  }, [isOpen]);
+
   return (
-    <alertContext.Provider value={{}}>
+    <alertContext.Provider value={{ showAlert }}>
       {children}
-      <Alert title="Наше всплывающее сообщение" isOpen={true} type="warning" />
+      <Alert title={title} isOpen={isOpen} type={type} />
     </alertContext.Provider>
   );
 };
