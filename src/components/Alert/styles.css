@@ -1,0 +1,13 @@
+.alert-wrapper {
+    border-radius: 5px;
+    max-width: 300px;
+    padding: 10px;
+    position: fixed;
+    right: -300px;
+    bottom: 30px;
+    transition: right .3s;
+}
+
+.alert-open {
+    right: 30px;
+}
