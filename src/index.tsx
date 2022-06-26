@@ -6,6 +6,7 @@ import { applyMiddleware, createStore } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./redux/rootReducer";
 import thunk from "redux-thunk";
+import ThemeProvider from "../src/contexts/themeContext/Provider";
 const container = document.getElementById("root");
 
 // Create a root.
@@ -19,7 +20,9 @@ const store = createStore(
 
 // Initial render: Render an element to the root.
 root.render(
-  <Provider store={store}>
-    <App />
-  </Provider>
+  <ThemeProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </ThemeProvider>
 );
