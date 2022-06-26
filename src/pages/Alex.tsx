@@ -91,6 +91,9 @@ const Alex = () => {
               </Button>
               <br />
               <br />
+              <Button onClick={() => /*showAlert("Текст", "error")*/ null}>
+                Показать alert
+              </Button>
             </div>
           }
         />

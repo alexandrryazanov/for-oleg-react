@@ -7,7 +7,8 @@ import { Provider } from "react-redux";
 import rootReducer from "./redux/rootReducer";
 import thunk from "redux-thunk";
 import ThemeProvider from "../src/contexts/themeContext/Provider";
-import Alert from "../src/components/Alert";
+import AlertProvider from "../src/contexts/alertContext/Provider";
+
 const container = document.getElementById("root");
 
 // Create a root.
@@ -22,9 +23,10 @@ const store = createStore(
 // Initial render: Render an element to the root.
 root.render(
   <ThemeProvider>
-    <Provider store={store}>
-      <App />
-      <Alert title="Наше всплывающее сообщение" isOpen={true} type="warning" />
-    </Provider>
+    <AlertProvider>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </AlertProvider>
   </ThemeProvider>
 );
