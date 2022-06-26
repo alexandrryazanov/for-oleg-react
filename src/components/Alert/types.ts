@@ -1,5 +1,4 @@
 export type AlertType = "error" | "warning" | "info" | "success";
-
 export interface AlertProps {
   type?: AlertType;
   title: string;
@@ -7,6 +6,6 @@ export interface AlertProps {
 }
 
 export interface AlertSettings {
-  icon: string;
+  icon: JSX.Element;
   background: string;
 }

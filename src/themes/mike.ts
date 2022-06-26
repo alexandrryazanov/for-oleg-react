@@ -4,9 +4,9 @@ export const theme: ITheme = {
   title: "Mike",
   colors: {
     primary: "#a823ea",
-    secondary: "#44ff79",
-    success: "#1c5e1c",
-    warning: "#e87a2b",
+    secondary: "#eed03d",
+    success: "#70e070",
+    warning: "#ea935a",
     error: "#fc4c4c",
     info: "#5b5be1",
   },

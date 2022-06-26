@@ -18,14 +18,11 @@ import useAlert from "../hooks/useAlert";
 
 const Alex = () => {
   const { theme, changeTheme } = useTheme();
+  const { showAlert } = useAlert();
+  const isAuth = useAuth();
 
   const [modalOpen, setModalOpen] = useState(false);
-  const isAuth = useAuth();
   const dispatch = useDispatch();
-
-  const showInputsValues = () => {
-    console.log();
-  };
 
   const loginHandler = async () => {
     await usersAPI.login("admin", "admin");
@@ -34,7 +31,7 @@ const Alex = () => {
   const logoutHandler = async () => {
     await usersAPI.logout();
   };
-  const { showAlert } = useAlert();
+
   return (
     <div>
       <button onClick={() => dispatch(addUser({ name: "Mike" }))}>
@@ -92,7 +89,14 @@ const Alex = () => {
               </Button>
               <br />
               <br />
-              <Button onClick={() => showAlert("Текст", "error")}>
+              <Button
+                onClick={() =>
+                  showAlert(
+                    "Недоджуны опять наговнякали! Пишите нормально!",
+                    "warning"
+                  )
+                }
+              >
                 Показать alert
               </Button>
             </div>

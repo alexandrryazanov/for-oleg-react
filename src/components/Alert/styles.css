@@ -7,8 +7,15 @@
     bottom: 30px;
     transition: right .3s;
     z-index: 10001;
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
 }
 
 .alert-open {
     right: 30px;
 }
+.alert-text {
+    max-width: 250px;
+}
+
