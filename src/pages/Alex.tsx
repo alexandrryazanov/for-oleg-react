@@ -15,6 +15,7 @@ import Avatar from "../components/Avatar";
 import useTheme from "../hooks/useTheme";
 import Button from "../components/Button";
 import useAlert from "../hooks/useAlert";
+import HookahComponent from "../components/Hookah";
 
 const Alex = () => {
   const { theme, changeTheme } = useTheme();
@@ -74,6 +75,7 @@ const Alex = () => {
             <Avatar src="https://sun1-95.userapi.com/s/v1/ig2/roVQ8Fydjx2jQNAsFKbnfQ9EIfPEuXsIlHMthi9XsLtBWCnOsS2gpJDeSLjQ-dd7MDkMhpMRju1PytbiVaQDEQoD.jpg?size=400x591&quality=96&crop=83,125,535,791&ava=1" />
           }
         />
+        <Tab title={"Hookah"} component={<HookahComponent />} />
         <Tab
           title="Theme"
           component={
