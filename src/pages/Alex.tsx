@@ -16,6 +16,7 @@ import useTheme from "../hooks/useTheme";
 import Button from "../components/Button";
 import useAlert from "../hooks/useAlert";
 import HookahComponent from "../components/Hookah";
+import Morse from "../components/Morse";
 
 const Alex = () => {
   const { theme, changeTheme } = useTheme();
@@ -104,6 +105,7 @@ const Alex = () => {
             </div>
           }
         />
+        <Tab title={"Morse"} component={<Morse />} />
       </Tabs>
 
       <Modal
