@@ -20,3 +20,7 @@ export const toCamelCase = (str: string, separator: string) => {
   // .filter((element) => element !== separator)
   // .map((el) => el.toUpperCase());
 };
+
+export function getRandomInt(max: number) {
+  return Math.floor(Math.random() * max);
+}

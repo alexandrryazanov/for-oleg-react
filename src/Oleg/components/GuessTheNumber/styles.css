@@ -1,0 +1,8 @@
+.o-button-guess-the-number {
+    border: none;
+    padding: 5px;
+}
+
+.o-button-guess-the-number:hover {
+    background-color: #61dafb;
+}
