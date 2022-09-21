@@ -11,7 +11,7 @@ import useAuth from "../hooks/useAuth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/users/actions";
 import GuessNumber from "../components/GuessNumber";
-import Avatar from "../components/Avatar";
+import Avatar from "../components/VKAvatar";
 import useTheme from "../hooks/useTheme";
 import Button from "../components/Button";
 import useAlert from "../hooks/useAlert";
@@ -19,6 +19,8 @@ import HookahComponent from "../components/Hookah";
 import Morse from "../components/Morse";
 import SelectIconTab from "../components/SelectIconTab";
 import BankComponent from "../components/Bank";
+import ChatCards from "components/ChatCards";
+import Filters from "components/Filters";
 
 const Alex = () => {
   const { theme, changeTheme } = useTheme();
@@ -49,6 +51,7 @@ const Alex = () => {
       </div>
       <button onClick={() => setModalOpen(true)}>Открыть модалку</button>
       <Tabs>
+        <Tab title={"Filters"} component={<Filters />} />
         <Tab title="Users" component={<UsersPage />} />
         <Tab title="Dropdown" component={<DropdownPage />} />
         <Tab title="Guess number" component={<GuessNumber />} />
@@ -110,6 +113,33 @@ const Alex = () => {
         <Tab title={"Morse"} component={<Morse />} />
         <Tab title={"IconSelector"} component={<SelectIconTab />} />
         <Tab title={"Bank"} component={<BankComponent />} />
+        <Tab
+          title={"Chat Cards"}
+          component={
+            <ChatCards
+              list={[
+                {
+                  title: "test1",
+                  lastMsg: "test1",
+                  avatarUrl:
+                    "https://kartinkin.net/uploads/posts/2022-03/1647426651_1-kartinkin-net-p-krasivie-kartinki-dlya-vk-1.jpg",
+                },
+                {
+                  title: "test2",
+                  lastMsg: "test1",
+                  avatarUrl:
+                    "https://mirpozitiva.ru/wp-content/uploads/2019/11/1472042660_10.jpg",
+                },
+                {
+                  title: "test3",
+                  lastMsg: "test1",
+                  avatarUrl:
+                    "https://mirpozitiva.ru/wp-content/uploads/2019/11/1472042660_10.jpg",
+                },
+              ]}
+            />
+          }
+        />
       </Tabs>
 
       <Modal
