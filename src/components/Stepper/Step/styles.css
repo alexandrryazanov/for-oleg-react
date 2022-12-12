@@ -1,0 +1,46 @@
+.step-title {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    font-weight: 300;
+    padding: 5px 5px 5px 0;
+}
+
+.step-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.step-content {
+    margin-left: 12px;
+    padding: 12px 10px 30px 20px;
+    overflow-y: hidden;
+    max-height: 300px;
+    transition: all .5s ease;
+}
+
+.step-path {
+    border-left: 1px solid lightgray;
+}
+
+.step-hidden {
+    max-height: 15px;
+    padding-bottom: 0;
+}
+
+.step-content p {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.step-actions {
+    display: flex;
+    column-gap: 10px;
+}
+

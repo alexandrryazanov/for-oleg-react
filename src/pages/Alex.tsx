@@ -21,6 +21,7 @@ import SelectIconTab from "../components/SelectIconTab";
 import BankComponent from "../components/Bank";
 import ChatCards from "components/ChatCards";
 import Filters from "components/Filters";
+import Stepper from "components/Stepper";
 
 const Alex = () => {
   const { theme, changeTheme } = useTheme();
@@ -140,6 +141,7 @@ const Alex = () => {
             />
           }
         />
+        <Tab title={"Stepper"} component={<Stepper />} />
       </Tabs>
 
       <Modal
