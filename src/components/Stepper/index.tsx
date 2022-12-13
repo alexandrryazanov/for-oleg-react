@@ -16,16 +16,17 @@ const Stepper = ({ children, onFinish }: StepperProps) => {
     setActive((prev) => prev - 1);
   };
 
+  const getStatus = (num: number, active: number) => {
+    if (num === active) return StepStatus.ACTIVE;
+    if (num < active) return StepStatus.SUCCESSFUL;
+    return StepStatus.INIT;
+  };
+
   return (
     <div className={"stepper-wrapper"}>
       {childrenArray.map((stepComponent, i) => {
         const num = i + 1;
-        const status =
-          num === active
-            ? StepStatus.ACTIVE
-            : num < active
-            ? StepStatus.SUCCESSFUL
-            : StepStatus.INIT;
+        const status = getStatus(num, active);
         return React.cloneElement(stepComponent as JSX.Element, {
           num,
           status,

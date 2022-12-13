@@ -149,6 +149,7 @@ const Alex = () => {
               <Step title="Первый шаг">test 1</Step>
               <Step title="Второй шаг">test 2</Step>
               <Step title="Третий шаг">test 3</Step>
+              <Step title="Третий шаг">test 4</Step>
             </Stepper>
           }
         />

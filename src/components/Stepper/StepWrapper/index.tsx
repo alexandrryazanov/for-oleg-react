@@ -4,6 +4,7 @@ import Button from "components/Button";
 import useTheme from "hooks/useTheme";
 import { StepWrapperProps } from "./types";
 import { StepStatus } from "../Step/types";
+import clsx from "clsx";
 
 const StepWrapper = ({
   children,
@@ -31,11 +32,15 @@ const StepWrapper = ({
         <span>{title}</span>
       </div>
       <div
-        className={
-          "step-content" +
-          (status !== ACTIVE ? " step-hidden" : "") +
-          (!isLast ? " step-path" : "") //TODO: clsx
-        }
+        // className={
+        //   "step-content" +
+        //   (status !== ACTIVE ? " step-hidden" : "") +
+        //   (!isLast ? " step-path" : "") //TODO: clsx
+        // }
+        className={clsx("step-content", {
+          "step-hidden": status !== ACTIVE,
+          "step-path": !isLast,
+        })}
       >
         <p>{children}</p>
         <div className={"step-actions"}>
