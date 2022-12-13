@@ -9,6 +9,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   color = "primary",
   variant = "contained",
+  disabled = false,
 }) => {
   const { theme } = useTheme();
 
@@ -24,8 +25,10 @@ const Button: React.FC<ButtonProps> = ({
             : getContrastColor(theme.colors[color]),
         boxShadow:
           variant === "outlined" ? "none" : `0 0 3px ${theme.colors[color]}`,
+        opacity: disabled ? 0.5 : 1,
       }}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>

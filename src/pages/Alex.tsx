@@ -22,6 +22,7 @@ import BankComponent from "../components/Bank";
 import ChatCards from "components/ChatCards";
 import Filters from "components/Filters";
 import Stepper from "components/Stepper";
+import Step from "components/Stepper/Step";
 
 const Alex = () => {
   const { theme, changeTheme } = useTheme();
@@ -141,7 +142,16 @@ const Alex = () => {
             />
           }
         />
-        <Tab title={"Stepper"} component={<Stepper />} />
+        <Tab
+          title={"Stepper"}
+          component={
+            <Stepper onFinish={() => console.log("Конец!!")}>
+              <Step title="Первый шаг">test 1</Step>
+              <Step title="Второй шаг">test 2</Step>
+              <Step title="Третий шаг">test 3</Step>
+            </Stepper>
+          }
+        />
       </Tabs>
 
       <Modal
