@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./styles.css";
 import { StepStatus } from "./Step/types";
 import { StepperProps } from "./types";
 
-const Stepper = ({ children, onFinish }: StepperProps) => {
+const Stepper = ({
+  children,
+  onFinish,
+  active: externalActive,
+  setActive: setExternalActive,
+}: StepperProps) => {
   const childrenArray = React.Children.toArray(children);
-  const [active, setActive] = useState(1);
+  const [internalActive, setInternalActive] = useState(1);
+
+  const active = externalActive || internalActive;
+  const setActive = setExternalActive || setInternalActive;
 
   const onNextClick = () => {
-    if (active === childrenArray.length && onFinish) onFinish();
+    if (active === childrenArray.length && onFinish) onFinish(active);
     setActive((prev) => prev + 1);
   };
 

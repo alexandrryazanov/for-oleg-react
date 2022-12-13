@@ -40,6 +40,12 @@ const Alex = () => {
     await usersAPI.logout();
   };
 
+  const reset = () => {
+    setActive(1);
+  };
+
+  const [active, setActive] = useState(1);
+
   return (
     <div>
       <button onClick={() => dispatch(addUser({ name: "Mike" }))}>
@@ -145,12 +151,18 @@ const Alex = () => {
         <Tab
           title={"Stepper"}
           component={
-            <Stepper onFinish={() => console.log("Конец!!")}>
-              <Step title="Первый шаг">test 1</Step>
-              <Step title="Второй шаг">test 2</Step>
-              <Step title="Третий шаг">test 3</Step>
-              <Step title="Третий шаг">test 4</Step>
-            </Stepper>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <Stepper active={active} setActive={setActive}>
+                <Step title="Первый шаг">test 1</Step>
+                <Step title="Второй шаг">test 2</Step>
+                <Step title="Третий шаг">test 3</Step>
+                <Step title="Третий шаг">test 4</Step>
+              </Stepper>
+
+              <Button onClick={reset} variant="outlined">
+                RESET
+              </Button>
+            </div>
           }
         />
       </Tabs>
