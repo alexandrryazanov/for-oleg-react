@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import Button from "../Button";
 import { delayInSec } from "../../utils";
+import useFuck from "hooks/useFuck";
 
 const Morse = () => {
   const [light, setLight] = useState(false);
   const [value, setValue] = useState("");
+
+  const fuck = useFuck(value);
 
   const onBlinkClick = async () => {
     if (!value) return;
@@ -26,7 +29,11 @@ const Morse = () => {
 
   return (
     <div>
-      <input value={value} onChange={(e) => setValue(e.target.value)} />
+      <input
+        style={{ color: fuck ? "red" : "black" }}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
       <Button onClick={onBlinkClick}>Проморгать</Button>
       <div
         style={{
